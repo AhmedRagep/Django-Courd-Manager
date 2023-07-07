@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% block content %}
+  <h1>Welcome to dashboard page! {{user}}</h1>
+  <br>
+  <a class="btn btn-outline-primary btn-sm" href="{% url 'webapp:add_record' %}">Create Record &nbsp; <i class="fa fa-building" aria-hidden="true"></i></a>
+  <hr>
+  <table class="table table table-hover table-bordered">
+    <thead class="table-light">
+      <tr>
+        <th scope="col">ID</th>
+        <th scope="col">Full Name</th>
+        <th scope="col">Email</th>
+        <th scope="col">Phone</th>
+        <th scope="col">Address</th>
+        <th scope="col">City</th>
+        <th scope="col">Province</th>
+        <th scope="col">Country</th>
+        <th scope="col">Data Joined</th>
+        <th scope="col">View</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for records in records %}
+        <tr>
+          <td>{{records.id}}</td>
+          <td>{{records.firstname|capfirst}} {{records.lastname|capfirst}}</td>
+          <td>{{records.email}}</td>
+          <td>{{records.phone}}</td>
+          <td>{{records.address}}</td>
+          <td>{{records.city|capfirst}}</td>
+          <td>{{records.province}}</td>
+          <td>{{records.country|capfirst}}</td>
+          <td>{{records.creation_date}}</td>
+          <td><a class="btn btn-success" href="{% url 'webapp:view_record' records.id %}"> <i class="fa fa-eye" aria-hidden="true"></i></a></td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  
+{% endblock content %}
+

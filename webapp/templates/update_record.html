@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+
+  <div class="container bg-light shadow-md p-5 form-layout">
+      <h3>Update Record</h3>
+      <h6>Update a requered detail in record</h6>
+      <hr>
+      <br>
+
+      <form method="POST" autocomplete="off">
+        {% csrf_token %}
+        {{record_form|crispy}}
+        <br>
+        <button type="submit" class="btn btn-primary w-100 btn-block p-2">Update Record &nbsp; <i class="fa fa-wrench" aria-hidden="true"></i></button>
+      </form>
+      <br>
+      {% comment %} <div class="text-center">
+        <p>You Hava An Account? </p><a href="{% url 'webapp:login' %}">Login</a>
+      </div> {% endcomment %}
+  </div>
+
+{% endblock content %}
